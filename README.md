@@ -7,6 +7,14 @@ It simply reads the versionCode from an external file and depending if it is the
 
 Just copy and past on your app folder
 
+## Usage
+
+By default, bump version is disabled. To enable it, just change `IS_RELEASE` on `version.properties`
+
+```sh
+IS_RELEASE=false
+```
+
 ## License
 
 Android-AutoIncrement-VersionCode is released under the [MIT License](http://www.opensource.org/licenses/MIT).
