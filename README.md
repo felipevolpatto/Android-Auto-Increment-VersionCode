@@ -1,7 +1,7 @@
-# Android-AutoIncrement-VersionCode
+# Android-Auto-Increment-VersionCode
 This project simply bumps the version code on each build on build.gradle
 
-It simply reads the versionCode from an external file and depending if it is the release flavor or the debug flavor increase the versionCode.
+It simply reads the versionCode from an external file and depending if it is the release flavor or the debug flavor increase the versionCode of you Android application.
 
 ## Installation
 
