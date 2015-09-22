@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    def Properties versionProps = new Properties()
+    def versionPropsFile = file('version.properties')
+
+    //Creates the version file if it doesn't exist
+    if(versionPropsFile.exists())
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+    def code = (versionProps['VERSION_CODE']).toInteger()
+    def isRelease = versionProps['IS_RELEASE'].toString() == "true"
+
+    if (isRelease) {
+        versionProps['VERSION_CODE'] = (code + 1).toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
+
+    defaultConfig {
+        applicationId "com.android.myapplication" //your application id
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode code
+        versionName "1.1." + code
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.0.1'
+}
